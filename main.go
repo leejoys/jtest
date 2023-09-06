@@ -50,7 +50,7 @@ func main() {
 		log.Println(err)
 		span.SetStatus(trace.Status{
 			Code:    trace.StatusCodeUnknown,
-			Message: "test error" + err.Error(),
+			Message: "NewRequestWithContext error: " + err.Error(),
 		})
 
 	}
@@ -61,7 +61,7 @@ func main() {
 		log.Println(err)
 		span.SetStatus(trace.Status{
 			Code:    trace.StatusCodeUnknown,
-			Message: "test error" + err.Error(),
+			Message: "Do error: " + err.Error(),
 		})
 		return
 	}
@@ -72,7 +72,7 @@ func main() {
 		log.Println(err)
 		span.SetStatus(trace.Status{
 			Code:    trace.StatusCodeUnknown,
-			Message: "test error" + err.Error(),
+			Message: "ReadAll error: " + err.Error(),
 		})
 	}
 
