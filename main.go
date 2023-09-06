@@ -41,11 +41,11 @@ func main() {
 	url := os.Args[1]
 
 	// Create a span
-	_, span := trace.StartSpan(context.Background(), "simple-trace")
+	ctx, span := trace.StartSpan(context.Background(), "simple-trace")
 	defer span.End()
 
 	// Create an HTTP request with tracing context
-	req, err := http.NewRequest("GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
 		log.Println(err)
 		span.SetStatus(trace.Status{
